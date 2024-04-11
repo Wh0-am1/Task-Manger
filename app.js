@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const task = require("./routes/task");
 const connectDB = require("./db/connect");
+const notFound = require("./notFound");
 
 require("dotenv").config();
 
@@ -20,3 +21,5 @@ const start = async (url) => {
 start(process.env.MONGO_URL);
 
 app.use("/api/v1/tasks", task);
+
+app.use(notFound);
